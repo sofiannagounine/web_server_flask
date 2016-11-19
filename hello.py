@@ -35,7 +35,8 @@ def internal_server_error(e):
 def index():
     form = NameForm()
     if form.validate_on_submit():
-        session['result'] = form.valeur1.data / form.valeur2.data
+        value_format= "{:.2f}".format(form.valeur1.data / form.valeur2.data)
+        session['result'] = value_format
         return redirect(url_for('index'))
     return render_template('index.html', form=form, result=session.get('result'))
 
