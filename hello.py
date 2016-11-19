@@ -3,8 +3,8 @@ from flask_script import Manager
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_wtf import Form
-from wtforms import IntegerField, SubmitField
-from wtforms.validators import  DataRequired
+from wtforms import FloatField, SubmitField
+from wtforms.validators import InputRequired, DataRequired
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hard to guess string'
@@ -15,9 +15,8 @@ moment = Moment(app)
 
 
 class NameForm(Form):
-    valeur1 = IntegerField('Entrez une valeur 1 : ', validators=[DataRequired()])
-    valeur2 = IntegerField('Entrez une valeur 2 : ', validators=[DataRequired()])
-
+    valeur1 = FloatField('valeur 1 : ', validators=[InputRequired("Entrez une valeur")])
+    valeur2 = FloatField('valeur 2 : ', validators=[InputRequired("Entrez une valeur")])
     submit = SubmitField('Calculer')
 
 
