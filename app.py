@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, session, redirect, url_for
 from flask_script import Manager
 from flask_bootstrap import Bootstrap
@@ -41,4 +42,5 @@ def index():
 
 
 if __name__ == '__main__':
+    manager.add_command('runserver', Server(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080))))
     manager.run()
